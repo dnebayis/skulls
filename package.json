@@ -5,7 +5,7 @@
     "preview:art": "node script/preview-renderer.mjs",
     "check:deployment": "node script/check-deployment.mjs",
     "check:mainnet-ready": "node script/mainnet-readiness.mjs",
-    "deploy:mainnet:dry": "bash -lc 'source .env && MIN_MAINNET_DEPLOYER_BALANCE_WEI=0 MAINNET_DEPLOY_CONFIRM=DEPLOY_HASHSKULLS_MAINNET forge script script/DeployMainnet.s.sol --rpc-url \"$RPC_MAINNET\"'",
+    "deploy:mainnet:dry": "bash -lc 'source .env && MAINNET_DEPLOY_CONFIRM=DEPLOY_HASHSKULLS_MAINNET forge script script/DeployMainnet.s.sol --rpc-url \"$RPC_MAINNET\"'",
     "deploy:mainnet": "bash -lc 'source .env && forge script script/DeployMainnet.s.sol --rpc-url \"$RPC_MAINNET\" --broadcast'",
     "smoke:sepolia": "node script/smoke-v10.mjs",
     "smoke:v10": "node script/smoke-v10.mjs"
