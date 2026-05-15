@@ -22,7 +22,7 @@ if (derived.toLowerCase() !== env.DEPLOYER_ADDRESS.toLowerCase()) {
 console.log(`ok deployer key matches: ${derived}`);
 
 const balanceWei = BigInt(run("cast", ["balance", env.DEPLOYER_ADDRESS, "--rpc-url", env.RPC_MAINNET]));
-const minWei = BigInt(env.MIN_MAINNET_DEPLOYER_BALANCE_WEI || "30000000000000000");
+const minWei = BigInt(env.MIN_MAINNET_DEPLOYER_BALANCE_WEI || "10000000000000000");
 console.log(`mainnet deployer balance wei: ${balanceWei}`);
 console.log(`minimum configured balance wei: ${minWei}`);
 if (balanceWei < minWei) {

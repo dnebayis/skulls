@@ -19,7 +19,7 @@ contract DeployMainnet is Script {
 
         uint256 pk = vm.envUint("DEPLOYER_PRIVATE_KEY");
         address deployer = vm.addr(pk);
-        uint256 minBalance = vm.envOr("MIN_MAINNET_DEPLOYER_BALANCE_WEI", uint256(0.03 ether));
+        uint256 minBalance = vm.envOr("MIN_MAINNET_DEPLOYER_BALANCE_WEI", uint256(0.01 ether));
 
         console.log("Network: Ethereum mainnet");
         console.log("Deployer:", deployer);
