@@ -15,7 +15,7 @@ export const viemChain = {
   contracts: {
     multicall3: {
       address: "0xcA11bde05977b3631167028862bE2a173976CA11" as `0x${string}`,
-      blockCreated: 751532,
+      blockCreated: 14353601,
     },
   },
 } as const;
