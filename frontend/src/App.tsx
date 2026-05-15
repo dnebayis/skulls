@@ -1,5 +1,6 @@
 import { lazy, Suspense, useState } from "react";
 import { usePrivy } from "@privy-io/react-auth";
+import { Analytics } from "@vercel/analytics/react";
 import { useSupply } from "./hooks/useSupply";
 import { CONFIG } from "./lib/config";
 
@@ -85,6 +86,7 @@ export function App() {
         </a>
         <span className="footer-note">Native object · Not ERC-721 · Wrap to trade on external marketplaces</span>
       </footer>
+      <Analytics />
     </div>
   );
 }
