@@ -1,0 +1,393 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>HashSkulls Art Direction Preview</title>
+  <style>
+    :root {
+      color-scheme: dark;
+      --bg: #08090d;
+      --panel: #10131a;
+      --line: #262b36;
+      --text: #f2eee5;
+      --muted: #9ca3af;
+      --gold: #ffd700;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      background: var(--bg);
+      color: var(--text);
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
+    }
+
+    main {
+      width: min(1180px, calc(100vw - 32px));
+      margin: 0 auto;
+      padding: 32px 0 44px;
+    }
+
+    header {
+      display: flex;
+      align-items: end;
+      justify-content: space-between;
+      gap: 20px;
+      padding-bottom: 20px;
+      border-bottom: 1px solid var(--line);
+    }
+
+    h1 {
+      margin: 0;
+      font-size: clamp(24px, 4vw, 42px);
+      line-height: 1;
+      letter-spacing: 0;
+    }
+
+    p {
+      max-width: 760px;
+      margin: 12px 0 0;
+      color: var(--muted);
+      line-height: 1.55;
+      font-size: 14px;
+    }
+
+    .badge {
+      flex: 0 0 auto;
+      border: 1px solid #6a5a10;
+      color: var(--gold);
+      padding: 8px 10px;
+      font-size: 12px;
+      background: #151203;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 14px;
+      margin-top: 24px;
+    }
+
+    .card {
+      border: 1px solid var(--line);
+      background: var(--panel);
+      padding: 14px;
+    }
+
+    .art {
+      width: 100%;
+      aspect-ratio: 1;
+      background: #050508;
+      image-rendering: pixelated;
+      display: block;
+      border: 1px solid #1e2430;
+    }
+
+    .meta {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      margin-top: 10px;
+      font-size: 12px;
+      color: var(--muted);
+    }
+
+    .name {
+      color: var(--text);
+    }
+
+    .note {
+      margin-top: 22px;
+      border-top: 1px solid var(--line);
+      padding-top: 18px;
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.55;
+    }
+
+    @media (max-width: 860px) {
+      header {
+        display: block;
+      }
+
+      .badge {
+        display: inline-block;
+        margin-top: 14px;
+      }
+
+      .grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    @media (max-width: 560px) {
+      .grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <header>
+      <div>
+        <h1>HashSkulls Preview</h1>
+        <p>Every skull below is drawn as a 16 by 16 grid using only SVG rects. The point is not a finished renderer patch; it is a concrete direction that can be converted into Solidity helpers without IPFS, images, paths, gradients, or external assets.</p>
+      </div>
+      <div class="badge">16x16 rect-only SVG</div>
+    </header>
+
+    <section class="grid" id="grid" aria-label="HashSkulls rect-only art previews"></section>
+
+    <div class="note">
+      Direction: make the silhouette less generic by changing cheek shape, brow weight, jaw width, tooth rhythm, asymmetric cracks, and small accessory profiles. These changes are cheap because they reuse rectangles and short runs, instead of adding complex SVG features.
+    </div>
+  </main>
+
+  <script>
+    const skulls = [
+      {
+        name: "Ancient Crown",
+        rarity: "Mythic",
+        bg: "#050508",
+        body: "#ffd700",
+        shadow: "#9f7600",
+        hi: "#fff0a8",
+        eye: "#ffffff",
+        glow: "#ffd700",
+        crack: "#5f3f00",
+        teeth: "fang",
+        eyes: "star",
+        cracks: "ancient",
+        accessory: "crown",
+        aura: "#6a5200"
+      },
+      {
+        name: "Toxic Jade",
+        rarity: "Rare",
+        bg: "#06100a",
+        body: "#78c98a",
+        shadow: "#3d7e4b",
+        hi: "#c8ffd0",
+        eye: "#20ff60",
+        glow: "#20ff60",
+        crack: "#14391e",
+        teeth: "jagged",
+        eyes: "glow",
+        cracks: "split",
+        accessory: "none",
+        aura: "#0f3c20"
+      },
+      {
+        name: "Hellfire Bone",
+        rarity: "Legendary",
+        bg: "#170505",
+        body: "#d8c7aa",
+        shadow: "#9c8460",
+        hi: "#fff8df",
+        eye: "#ff3b20",
+        glow: "#ff7a00",
+        crack: "#5a2b15",
+        teeth: "serrated",
+        eyes: "hollow",
+        cracks: "lightning",
+        accessory: "fire",
+        aura: "#431005"
+      },
+      {
+        name: "Silver Star",
+        rarity: "Legendary",
+        bg: "#060a12",
+        body: "#c6cad2",
+        shadow: "#7c838f",
+        hi: "#ffffff",
+        eye: "#ffd700",
+        glow: "#ffd700",
+        crack: "#353b45",
+        teeth: "grin",
+        eyes: "star",
+        cracks: "hairline",
+        accessory: "none",
+        aura: "#20283a"
+      },
+      {
+        name: "Shattered Crimson",
+        rarity: "Rare",
+        bg: "#110507",
+        body: "#f06b6b",
+        shadow: "#9e3030",
+        hi: "#ffd0c8",
+        eye: "#ff2020",
+        glow: "#ff2020",
+        crack: "#2a0808",
+        teeth: "jagged",
+        eyes: "cross",
+        cracks: "shattered",
+        accessory: "none",
+        aura: "#3c0b0b"
+      },
+      {
+        name: "Arcane Amethyst",
+        rarity: "Mythic",
+        bg: "#0f0613",
+        body: "#c88be0",
+        shadow: "#7a3d8f",
+        hi: "#f6d1ff",
+        eye: "#8a6cff",
+        glow: "#6040ff",
+        crack: "#311340",
+        teeth: "fang",
+        eyes: "spiral",
+        cracks: "spider",
+        accessory: "crown",
+        aura: "#271445"
+      }
+    ];
+
+    function rect(x, y, w, h, fill, opacity = 1) {
+      return `<rect x="${x * 16}" y="${y * 16}" width="${w * 16}" height="${h * 16}" fill="${fill}" opacity="${opacity}"/>`;
+    }
+
+    function px(x, y, fill, opacity = 1) {
+      return rect(x, y, 1, 1, fill, opacity);
+    }
+
+    function skullBody(s) {
+      return [
+        rect(4, 1, 7, 1, s.body),
+        rect(3, 2, 10, 1, s.body),
+        rect(2, 3, 12, 1, s.body),
+        rect(2, 4, 12, 1, s.body),
+        rect(2, 5, 12, 1, s.body),
+        rect(2, 6, 12, 1, s.body),
+        rect(2, 7, 12, 1, s.body),
+        rect(2, 8, 12, 1, s.body),
+        rect(2, 9, 3, 1, s.body),
+        rect(11, 9, 3, 1, s.body),
+        rect(2, 10, 4, 1, s.body),
+        rect(10, 10, 4, 1, s.body),
+        rect(3, 11, 10, 1, s.body),
+        rect(3, 12, 10, 1, s.body),
+        rect(4, 13, 8, 1, "#111115"),
+        rect(3, 3, 1, 7, s.shadow),
+        px(4, 10, s.shadow),
+        px(3, 11, s.shadow),
+        px(4, 1, s.hi),
+        px(5, 1, s.hi),
+        px(13, 3, s.hi),
+        px(12, 2, s.hi)
+      ].join("");
+    }
+
+    function eyes(s) {
+      const dark = "#050506";
+      const sockets = rect(3, 6, 3, 3, dark) + rect(10, 6, 3, 3, dark);
+      if (s.eyes === "star") {
+        return sockets + [
+          px(4, 6, s.eye), px(3, 7, s.eye), px(4, 7, s.hi), px(5, 7, s.eye), px(4, 8, s.eye),
+          px(11, 6, s.eye), px(10, 7, s.eye), px(11, 7, s.hi), px(12, 7, s.eye), px(11, 8, s.eye)
+        ].join("");
+      }
+      if (s.eyes === "spiral") {
+        return sockets + [
+          px(3, 6, s.eye), px(4, 6, s.eye), px(5, 6, s.eye), px(5, 7, s.eye), px(4, 8, s.eye), px(3, 8, s.eye), px(4, 7, s.hi),
+          px(10, 6, s.eye), px(11, 6, s.eye), px(12, 6, s.eye), px(12, 7, s.eye), px(11, 8, s.eye), px(10, 8, s.eye), px(11, 7, s.hi)
+        ].join("");
+      }
+      if (s.eyes === "cross") {
+        return sockets + [
+          px(3, 6, s.eye), px(5, 6, s.eye), px(4, 7, s.eye), px(3, 8, s.eye), px(5, 8, s.eye),
+          px(10, 6, s.eye), px(12, 6, s.eye), px(11, 7, s.eye), px(10, 8, s.eye), px(12, 8, s.eye)
+        ].join("");
+      }
+      if (s.eyes === "glow") {
+        return rect(3, 6, 3, 3, s.eye) + rect(10, 6, 3, 3, s.eye) + px(4, 7, s.hi) + px(11, 7, s.hi);
+      }
+      return sockets + rect(4, 7, 1, 1, s.glow) + rect(11, 7, 1, 1, s.glow);
+    }
+
+    function teeth(s) {
+      if (s.teeth === "fang") {
+        return rect(4, 14, 2, 2, s.body) + rect(6, 14, 1, 3, s.body) + rect(9, 14, 1, 3, s.body) + rect(10, 14, 2, 2, s.body);
+      }
+      if (s.teeth === "grin") {
+        return rect(4, 14, 8, 1, s.body) + rect(4, 15, 8, 1, s.body) + px(6, 14, "#111115") + px(9, 14, "#111115");
+      }
+      if (s.teeth === "jagged") {
+        return [px(4, 14, s.body), px(5, 14, s.body), px(5, 15, s.body), px(6, 14, s.body), px(7, 14, s.body), px(7, 15, s.body), px(8, 14, s.body), px(9, 14, s.body), px(9, 15, s.body), px(10, 14, s.body), px(11, 14, s.body), px(11, 15, s.body)].join("");
+      }
+      return rect(4, 14, 2, 2, s.body) + px(6, 14, "#111115") + rect(7, 14, 2, 2, s.body) + px(9, 14, "#111115") + rect(10, 14, 2, 2, s.body);
+    }
+
+    function cracks(s) {
+      if (s.cracks === "ancient") {
+        return [px(8, 1, s.crack), px(7, 2, s.crack), px(9, 2, s.crack), px(6, 3, s.crack), px(8, 3, s.crack), px(10, 3, s.crack), px(7, 4, s.crack), px(9, 4, s.crack), px(6, 5, s.crack), px(8, 5, s.crack), px(10, 5, s.crack)].join("");
+      }
+      if (s.cracks === "shattered") {
+        return [px(7, 2, s.crack), px(9, 2, s.crack), px(6, 3, s.crack), px(8, 3, s.crack), px(10, 3, s.crack), px(5, 4, s.crack), px(7, 4, s.crack), px(9, 4, s.crack), px(6, 5, s.crack), px(8, 5, s.crack), px(10, 5, s.crack)].join("");
+      }
+      if (s.cracks === "spider") {
+        return [px(8, 2, s.crack), px(8, 3, s.crack), px(7, 3, s.crack), px(9, 3, s.crack), px(6, 4, s.crack), px(10, 4, s.crack), px(7, 5, s.crack), px(9, 5, s.crack)].join("");
+      }
+      if (s.cracks === "lightning") {
+        return [px(9, 1, s.crack), px(8, 2, s.crack), px(9, 3, s.crack), px(8, 4, s.crack), px(7, 5, s.crack), px(7, 6, s.crack)].join("");
+      }
+      if (s.cracks === "split") {
+        return [px(8, 2, s.crack), px(8, 3, s.crack), px(7, 4, s.crack), px(8, 5, s.crack), px(7, 6, s.crack)].join("");
+      }
+      return [px(8, 2, s.crack), px(8, 3, s.crack), px(8, 4, s.crack)].join("");
+    }
+
+    function accessory(s) {
+      if (s.accessory === "crown") {
+        return rect(4, 0, 8, 1, "#ffd700") + px(5, 0, "#ff9f1a") + px(8, 0, s.hi) + px(11, 0, "#ff9f1a") + rect(5, 1, 6, 1, "#d8a500");
+      }
+      if (s.accessory === "fire") {
+        return [px(5, 0, "#ff8800"), px(6, 0, "#ff4400"), px(7, 0, "#ffcc00"), px(8, 0, "#ffcc00"), px(9, 0, "#ff4400"), px(10, 0, "#ff8800"), px(6, 1, "#ffaa00"), px(7, 1, "#ffdd55"), px(8, 1, "#ffdd55"), px(9, 1, "#ffaa00")].join("");
+      }
+      return "";
+    }
+
+    function aura(s) {
+      return [
+        rect(1, 2, 1, 10, s.aura, 0.55),
+        rect(14, 3, 1, 9, s.aura, 0.55),
+        rect(3, 14, 10, 1, s.aura, 0.45),
+        px(2, 1, s.glow, 0.65),
+        px(13, 1, s.glow, 0.65),
+        px(1, 13, s.glow, 0.55),
+        px(14, 13, s.glow, 0.55)
+      ].join("");
+    }
+
+    function renderSkull(s) {
+      return `<svg class="art" viewBox="0 0 256 256" shape-rendering="crispEdges" role="img" aria-label="${s.name}">
+        <rect width="256" height="256" fill="${s.bg}"/>
+        ${aura(s)}
+        <g opacity="0.6">${rect(3, 3, 11, 11, "#000000")}</g>
+        ${skullBody(s)}
+        ${eyes(s)}
+        ${teeth(s)}
+        ${cracks(s)}
+        ${accessory(s)}
+      </svg>`;
+    }
+
+    document.getElementById("grid").innerHTML = skulls.map((s) => `
+      <article class="card">
+        ${renderSkull(s)}
+        <div class="meta">
+          <span class="name">${s.name}</span>
+          <span>${s.rarity}</span>
+        </div>
+      </article>
+    `).join("");
+  </script>
+</body>
+</html>

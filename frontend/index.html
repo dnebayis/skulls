@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>HashSkulls — Blockchain-Born Pixel Skulls</title>
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+</head>
+<body>
+  <div id="app">
+
+    <header>
+      <div class="brand">
+        <span class="brand-icon">💀</span>
+        <span class="brand-name">HashSkulls</span>
+      </div>
+      <button id="btn-connect" class="btn btn-secondary">Connect Wallet</button>
+    </header>
+
+    <main>
+      <section class="hero">
+        <h1>Bu karakterleri kimse tasarlamadı.<br><span class="accent">Blockchain doğurdu.</span></h1>
+        <p class="subtitle">
+          10,000 pixel skull NFTs — every trait derived from an onchain seed.<br>
+          <code>keccak256((contract ⊕ blockhash), (prevrandao ⊕ tokenId ⊕ sender))</code>
+        </p>
+      </section>
+
+      <section class="mint-panel">
+        <div class="supply-bar-wrap">
+          <div class="supply-labels">
+            <span id="supply-minted">— minted</span>
+            <span id="supply-max">of — max</span>
+          </div>
+          <div class="supply-bar">
+            <div id="supply-fill" class="supply-fill" style="width:0%"></div>
+          </div>
+        </div>
+
+        <div class="mint-card">
+          <div class="mint-preview" id="mint-preview">
+            <div class="preview-placeholder">?</div>
+          </div>
+          <div class="mint-info">
+            <div class="mint-row">
+              <span class="label">Price</span>
+              <span class="value" id="mint-price">0.000225 ETH</span>
+            </div>
+            <div class="mint-row">
+              <span class="label">Network</span>
+              <span class="value" id="network-name">—</span>
+            </div>
+            <button id="btn-mint" class="btn btn-primary" disabled>
+              Connect to Mint
+            </button>
+            <p class="mint-hint">Mint directly — no intermediary.</p>
+          </div>
+        </div>
+
+        <div id="mint-result" class="mint-result hidden"></div>
+      </section>
+
+      <section class="traits-section hidden" id="traits-section">
+        <h2>Your Skull</h2>
+        <div id="skull-display" class="skull-display"></div>
+      </section>
+
+      <section class="explainer">
+        <h2>How it works</h2>
+        <div class="explainer-grid">
+          <div class="explainer-card">
+            <div class="explainer-icon">⛓️</div>
+            <h3>Onchain seed</h3>
+            <p>contract ⊕ blockhash and prevrandao ⊕ tokenId ⊕ sender are hashed into the seed. No oracle, no off-chain randomness service.</p>
+          </div>
+          <div class="explainer-card">
+            <div class="explainer-icon">🖼️</div>
+            <h3>Fully onchain</h3>
+            <p>No IPFS. No metadata server. The SVG lives inside the contract. As long as Ethereum exists, the skull exists.</p>
+          </div>
+          <div class="explainer-card">
+            <div class="explainer-icon">🔓</div>
+            <h3>Open mint</h3>
+            <p>No whitelist, no presale. Mint from Blockscout, cast, or this page. The contract is the truth.</p>
+          </div>
+          <div class="explainer-card">
+            <div class="explainer-icon">🎭</div>
+            <h3>Wrap for marketplaces</h3>
+            <p>Native object has its own semantics. Wrap to ERC-721 for OpenSea, Blur, LooksRare.</p>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <a id="link-contract" href="#" target="_blank">Contract ↗</a>
+      <span>·</span>
+      <a id="link-blockscout" href="#" target="_blank">Blockscout ↗</a>
+    </footer>
+
+  </div>
+  <script type="module" src="/src/main.tsx"></script>
+</body>
+</html>
