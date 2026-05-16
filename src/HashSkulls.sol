@@ -20,7 +20,7 @@ contract HashSkulls {
 
     uint256 public constant MAX_SUPPLY      = 10_000;
     uint256 public constant MAX_PER_WALLET  = 3;
-    uint256 public constant MINT_PRICE      = 0.000225 ether;
+    uint256 public constant MINT_PRICE      = 0 ether;
 
     string public constant name   = "HashSkulls";
     string public constant symbol = "SKULL";

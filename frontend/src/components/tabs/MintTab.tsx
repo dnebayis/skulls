@@ -71,7 +71,7 @@ export function MintTab({ supply, onMinted }: Props) {
           <div className="mint-card-body">
             <div className="mint-stat-row">
               <span>Price</span>
-              <strong>{formatEther(price)} ETH each</strong>
+              <strong style={{ color: "var(--gold)" }}>FREE</strong>
             </div>
             {authenticated && mintsLeft > 0 && (
               <div className="mint-stat-row">
@@ -150,7 +150,7 @@ export function MintTab({ supply, onMinted }: Props) {
                   state === "pending" ? "Minting..." :
                   state === "success" ? "Minted!" :
                   mintsLeft === 0 ? "Limit Reached" :
-                  `Mint ${selectedQuantity} — ${formatEther(totalPrice)} ETH`}
+                  `Mint ${selectedQuantity} — FREE`}
               </button>
             )}
 

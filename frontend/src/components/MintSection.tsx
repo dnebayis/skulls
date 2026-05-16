@@ -24,7 +24,6 @@ export function MintSection({ supply, onMinted }: Props) {
   }
 
   const isBusy = state === "confirm" || state === "pending";
-  const priceEth = (Number(CONFIG.mintPrice) / 1e18).toFixed(6);
 
   return (
     <section className="mint-section">
@@ -56,7 +55,7 @@ export function MintSection({ supply, onMinted }: Props) {
         <div className="mint-card-body">
           <div className="mint-stat-row">
             <span>Price</span>
-            <strong>{priceEth} ETH</strong>
+            <strong style={{ color: "var(--gold)" }}>FREE</strong>
           </div>
           <div className="mint-stat-row">
             <span>Network</span>
@@ -79,7 +78,7 @@ export function MintSection({ supply, onMinted }: Props) {
             >
               {state === "confirm" && "Confirm in wallet…"}
               {state === "pending" && "Broadcasting…"}
-              {(state === "idle" || state === "success" || state === "error") && `Mint — ${priceEth} ETH`}
+              {(state === "idle" || state === "success" || state === "error") && "Mint — FREE"}
             </button>
           )}
 

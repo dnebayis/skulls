@@ -4,11 +4,10 @@ export const CONFIG = {
   rpcUrl: "https://ethereum-rpc.publicnode.com",
   blockExplorer: "https://etherscan.io",
   nativeCurrency: { name: "Ether", symbol: "ETH", decimals: 18 },
-  rendererAddress:   "0xa23353ef8d2951aed528627771c74069a00005ca" as `0x${string}`,
-  rendererAddressV4: "0x4E03193F485152656601124029c943D477cA2981" as `0x${string}`,
-  skullsAddress:   "0x2cfe87a67c04b90740c88a536d1fee92801aebdc" as `0x${string}`,
-  wrapperAddress:  "0x88223ee6d93c1967844ee604972ed484974c427d" as `0x${string}`,
-  marketAddress:   "0x29a276f16f743b02d8bc8b058fa9051afc766673" as `0x${string}`,
-  mintPrice: 225000000000000n, // 0.000225 ETH
+  rendererAddress:   "0xA23353eF8d2951aeD528627771C74069a00005Ca" as `0x${string}`,
+  skullsAddress:   "0xb7eF4eA40be33a72BFae53D47A12c4EE8Acfd0Bb" as `0x${string}`,
+  wrapperAddress:  "0xb00B1647F20c5D50589Bc29a218d6D6032ccf117" as `0x${string}`,
+  marketAddress:   "0x7041f4cB9F00275081885f9D693FBf20b7D12964" as `0x${string}`,
+  mintPrice: 0n, // FREE
   maxPerWallet: 3,
 } as const;
