@@ -1,5 +1,4 @@
 import { usePrivy, useWallets } from "@privy-io/react-auth";
-import { formatEther } from "viem";
 import { useState } from "react";
 import { useMint } from "../../hooks/useMint";
 import { SkullResult } from "../SkullResult";
@@ -30,9 +29,7 @@ export function MintTab({ supply, onMinted }: Props) {
   }
 
   const canMint = authenticated && mintsLeft > 0 && state === "idle";
-  const price = supply?.price ?? CONFIG.mintPrice;
   const selectedQuantity = Math.min(quantity, Math.max(mintsLeft, 1));
-  const totalPrice = price * BigInt(selectedQuantity);
 
   return (
     <main>
