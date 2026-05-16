@@ -10,12 +10,12 @@ export function PrivyRoot() {
       config={{
         loginMethods: ["wallet", "email", "google"],
         defaultChain: {
-          id: 11155111,
-          name: "Sepolia",
+          id: 1,
+          name: "Ethereum",
           nativeCurrency: { name: "Ether", symbol: "ETH", decimals: 18 },
           rpcUrls: {
-            default: { http: ["https://ethereum-sepolia-rpc.publicnode.com"] },
-            public: { http: ["https://ethereum-sepolia-rpc.publicnode.com"] },
+            default: { http: ["https://ethereum-rpc.publicnode.com"] },
+            public: { http: ["https://ethereum-rpc.publicnode.com"] },
           },
         },
         embeddedWallets: { ethereum: { createOnLogin: "users-without-wallets" } },

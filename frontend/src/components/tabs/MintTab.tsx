@@ -91,7 +91,7 @@ export function MintTab({ supply, onMinted }: Props) {
             )}
             <div className="mint-stat-row">
               <span>Network</span>
-              <strong>Sepolia Testnet</strong>
+              <strong>Ethereum Mainnet</strong>
             </div>
             {authenticated && (
               <div className="mint-stat-row">

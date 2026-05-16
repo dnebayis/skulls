@@ -39,7 +39,7 @@ export function App() {
           )}
         </div>
         <div className="header-right">
-          <span className="header-network">Sepolia</span>
+          <span className="header-network">Ethereum</span>
           {!authenticated ? (
             <button className="btn btn-outline" onClick={login}>Connect</button>
           ) : (
